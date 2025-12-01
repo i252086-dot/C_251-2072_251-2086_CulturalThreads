@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Heritage - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* HEADER */
+        .header {
+            background: #1e3a2f;
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 12px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .logo-img {
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .brand-name {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            margin: 0 30px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            background: #f8f8f8;
+        }
+        .search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+        .icons {
+            display: flex;
+            gap: 22px;
+        }
+        .icons i {
+            font-size: 26px;
+            color: white;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .icons i:hover {
+            color: #c0392b;
+            transform: scale(1.15);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            max-width: 1400px;
+            margin: 12px auto 0;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 8px 0;
+            transition: .3s;
+        }
+        .nav-links a:hover {
+            color: #c0392b;
+            border-bottom: 3px solid #c0392b;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1583675995981-1ae91e8c9222?w=1200');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* OUR STORY SECTION */
+        .story {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+        .story h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-weight: 900;
+        }
+        .story p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* MISSION VALUES SECTION */
+        .values {
+            background: #e8e8e8;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .values h2 {
+            font-size: 38px;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            font-weight: 900;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media(max-width: 900px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .value-card {
+            text-align: center;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .value-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .value-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* JOURNEY SECTION */
+        .journey {
+            background: #f5e6d3;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .journey h2 {
+            font-size: 38px;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            font-weight: 900;
+        }
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        @media(max-width: 768px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-item h3 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .timeline-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            background: #3d5a3d;
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-white {
+            background: white;
+            color: #3d5a3d;
+        }
+        .btn-white:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+        .btn-green {
+            background: #5a7d5a;
+            color: white;
+        }
+        .btn-green:hover {
+            background: #4a6d4a;
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #2c1e1a;
+            color: #f0e6d2;
+            padding: 80px 40px 40px;
+        }
+        .footer-content {
+            max-width: 1350px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+        @media(max-width:900px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(max-width:600px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .footer p {
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: #f0e6d2;
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .footer a:hover {
+            color: #c0392b;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .social-icons i:hover {
+            color: #c0392b;
+            transform: scale(1.2);
+        }
+        .newsletter input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            margin-bottom: 15px;
+        }
+        .newsletter button {
+            background: #c0392b;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .newsletter button:hover {
+            background: #a93226;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 15px;
+            opacity: 0.8;
+            padding-top: 30px;
+            border-top: 1px solid rgba(240,230,210,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="top-bar">
+            <div class="logo-section">
+                <img src="https://i.ibb.co/Y4sWPjbS/Screenshot-2025-11-30-140459.png" alt="Logo" class="logo-img">
+                <span class="brand-name">Cultural Heritage</span>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search a setting...">
+            </div>
+            <div class="icons">
+                <a href="./page2.html"><i class="fas fa-user-circle"></i></a>
+                <a href="./page12.html"> <i class="far fa-heart"></i></a>
+                <a href="./page12.html"> <i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="./page1.html">Home</a>
+          <a href="./page3.html">KPK</a>
+        <a href="./page3.html">Balochistan</a>
+            <a href="./page4.html">Style Quiz</a>
+            <a href="#">About</a>
+            <a href="./page14.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1>Preserving Heritage</h1>
+        <p>We bridge tradition with modern style, sharing Pakistan's cultural riches through authentic traditional clothing. Our pieces embody the spirit of Balochistan and Khyber Pakhtunkhwa, crafted with heritage, passion, and timeless craftsmanship.</p>
+    </div>
+
+    <!-- OUR STORY -->
+    <div class="story">
+        <h2>Our Story</h2>
+        <p>Heritage Threads was born from a vision: to create a powerful platform to bridge the gap between overseas Pakistanis, communities and their rich cultural heritage. Founded in 2018, we recognized that many Pakistanis living abroad struggled to find authentic, high-quality traditional clothing with no nearby roots.</p>
+        <p>Our journey began when our founder, while living abroad, searched tirelessly for a traditional outfit for a family wedding. The available options were either mass-produced imitations or prohibitively expensive. This experience sparked the idea to create a business that would connect people directly with skilled artisans from their homeland.</p>
+        <p>Today, Heritage Threads proudly partners with over 50 cooperatives across rural Balochistan and Khyber Pakhtunkhwa, ensuring that every piece we offer carries the authentic spirit of Pakistani craftsmanship. We believe that clothing is more than fabric: it's a connection to identity, culture, and the generations who came before us.</p>
+    </div>
+
+    <!-- MISSION VALUES -->
+    <div class="values">
+        <h2>Our Mission Values:</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Authenticity</h3>
+                <p>Every piece we curate is skilled crafted by local artisans, using techniques passed down through generations, ensuring genuine cultural representation.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community</h3>
+                <p>We support local Pakistani communities by providing fair wages and sustainable livelihoods, helping preserve cultural traditions.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Connection</h3>
+                <p>We bridge cultures and distances, helping overseas Pakistanis maintain their connections to home through beautiful traditional wear.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JOURNEY -->
+    <div class="journey">
+        <h2>Our Journey:</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>2019</h3>
+                <p>50+ Artisans</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2018</h3>
+                <p>Founded</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2023</h3>
+                <p>10,000+ Customers</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2021</h3>
+                <p>Global Reach</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2024</h3>
+                <p>Sustainability Focus</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="cta">
+        <h2>Join Our Heritage Community</h2>
+        <p>Discover authentic traditional clothing and connect with your cultural roots.</p>
+        <div class="cta-buttons">
+            <button class="btn btn-white">Take Style Quiz</button>
+            <button class="btn btn-green">Contact Us</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Preserving Pakistan's Cultural Legacy</h3>
+                <p><strong>Shops Location:</strong></p>
+                <p>Saddar<br>Quetta<br>Mingora<br>Gwadar</p>
+            </div>
+            <div>
+                <h3>Customer Care</h3>
+                <a href="#">Shipping & Delivery</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Size Guide</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div>
+                <h3>Connect:</h3>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div>
+                <h3>Connect With us</h3>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter your Email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Cultural Heritage © 2025 Cultural Threads. All rights reserved | Crafted with love for Pakistani heritage
+        </div>
+    </div>
+
+</body>
+</html>
