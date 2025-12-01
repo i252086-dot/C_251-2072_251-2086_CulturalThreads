@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Heritage - KPK Men's Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #d5efdb;
+            color: #333;
+        }
+        /* HEADER */
+        .header {
+            background: #1e3a2f;
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 12px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .logo-img {
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .brand-name {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            margin: 0 30px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            background: #f8f8f8;
+        }
+        .search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+        .icons {
+            display: flex;
+            gap: 22px;
+        }
+        .icons i {
+            font-size: 26px;
+            color: white;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .icons i:hover {
+            color: #c0392b;
+            transform: scale(1.15);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            max-width: 1400px;
+            margin: 12px auto 0;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 8px 0;
+            transition: .3s;
+        }
+        .nav-links a:hover {
+            color: #c0392b;
+            border-bottom: 3px solid #c0392b;
+        }
+        /* PAGE TITLE */
+        .page-title {
+            background: #27ae60;
+            color: white;
+            text-align: left;
+            padding: 30px 40px;
+        }
+        .page-title h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .page-title p {
+            font-size: 16px;
+        }
+        /* CONTAINER */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 40px;
+            background: #d5efdb;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 1024px) {
+            .products { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .products { grid-template-columns: 1fr; }
+        }
+        /* PRODUCT CARDS */
+        .card {
+            width: 100%;
+            background: #d5efdb;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-bottom: 4px solid #27ae60;
+        }
+        .card h3 {
+            padding: 18px 10px 8px;
+            font-size: 19px;
+            color: #2c3e50;
+        }
+        .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .stars {
+            color: #f1c40f;
+            margin: 10px 0;
+            font-size: 19px;
+        }
+        .actions {
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .add-btn:hover { background: #c0392b; }
+        .heart {
+            font-size: 28px;
+            cursor: pointer;
+            color: #e74c3c;
+        }
+        .heart:hover { color: #c0392b; }
+        /* FOOTER */
+        .footer {
+            background: #2c1e1a;
+            color: #f0e6d2;
+            padding: 80px 40px 40px;
+            margin-top: 100px;
+        }
+        .footer-content {
+            max-width: 1350px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+        @media(max-width:900px) { .footer-content { grid-template-columns: 1fr 1fr; } }
+        @media(max-width:600px) { .footer-content { grid-template-columns: 1fr; } }
+        .footer h3 { color: white; font-size: 22px; margin-bottom: 20px; font-weight: 700; }
+        .footer p { font-size: 15px; line-height: 1.8; }
+        .footer a { color: #f0e6d2; text-decoration: none; display: block; margin: 8px 0; font-size: 15px; }
+        .footer a:hover { color: #c0392b; }
+        .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .social-icons i { font-size: 24px; cursor: pointer; transition: .3s; }
+        .social-icons i:hover { color: #c0392b; transform: scale(1.2); }
+        .newsletter input { width: 100%; padding: 14px; border-radius: 30px; border: none; margin-bottom: 15px; }
+        .newsletter button { background: #c0392b; color: white; padding: 14px 30px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; width: 100%; }
+        .newsletter button:hover { background: #a93226; }
+        .copyright { text-align: center; margin-top: 60px; font-size: 15px; opacity: 0.8; padding-top: 30px; border-top: 1px solid rgba(240,230,210,0.2); }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="top-bar">
+            <div class="logo-section">
+                <img src="https://i.ibb.co/Y4sWPjbS/Screenshot-2025-11-30-140459.png" alt="Logo" class="logo-img">
+                <span class="brand-name">Cultural Heritage</span>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search products...">
+            </div>
+            <div class="icons">
+                <a href="./page2.html"><i class="fas fa-user-circle"></i></a>
+                <a href="./page12.html"><i class="far fa-heart"></i></a>
+                <a href="./page12.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="./page1.html">Home</a>
+            <a href="./page3.html">KPK</a>
+            <a href="./balochistan.html">Balochistan</a>
+            <a href="./page4.html">Style Quiz</a>
+            <a href="./page13.html">About</a>
+            <a href="./page14.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+        <h1>KPK Traditionals</h1>
+        <p>Authentic Craftsmanship, Lasting Legacy and Enduring Craft</p>
+        <p style="font-size:20px; margin-top:5px; font-weight:600;">Men's Collection</p>
+    </div>
+
+    <!-- ALL PRODUCTS (Sorted: Lowest → Highest Price) -->
+    <div class="container">
+        <div class="products">
+            <!-- PKR 2500 -->
+            <div class="card">
+                <img src="https://woshoush.com/cdn/shop/products/IN1920A_Pashtunchitralhat_2-2_1080x.jpg?v=1634671601" alt="Chitrali Traditional Cap">
+                <h3>Chitrali Traditional Cap</h3>
+                <p class="price">PKR 2500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 3000 -->
+            <div class="card">
+                <img src="https://static-01.daraz.pk/p/1795aea51b4a62ce2cffbd4a70f42b9d.jpg" alt="Swati Embroidered Topi">
+                <h3>Swati Embroidered Topi</h3>
+                <p class="price">PKR 3000</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 3500 -->
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chitrali_Cap.JPG/250px-Chitrali_Cap.JPG" alt="Pakol Hat">
+                <h3>Pakol Hat</h3>
+                <p class="price">PKR 3500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 4000 -->
+            <div class="card">
+                <img src="https://pk-live-21.slatic.net/kf/S113b7a3fa8bf4e6ab344a300e8bf79ebz.jpg" alt="Swati Wool Shawl">
+                <h3>Swati Wool Shawl</h3>
+                <p class="price">PKR 4000</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <div class="card">
+                <img src="https://shop.silkroutebazar.com/wp-content/uploads/2022/11/Untitled-design-17-504x733.png" alt="Chitral Pashmina">
+                <h3>Chitral Pashmina</h3>
+                <p class="price">PKR 4000</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 5500 -->
+            <div class="card">
+                <img src="https://amiradnan.com/cdn/shop/files/PremiumJamawarTapShoeTraditionalWaistcoat_2.png?v=1756269700&width=1080" alt="Peshawari Formal Jacket">
+                <h3>Peshawari Formal Jacket</h3>
+                <p class="price">PKR 5500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 6500 -->
+            <div class="card">
+                <img src="https://img.drz.lazcdn.com/static/pk/p/214fbfcc23c9b17d3585a2ef4bdc8870.jpg_720x720q80.jpg" alt="Cotton Chaddar">
+                <h3>Cotton Chaddar</h3>
+                <p class="price">PKR 6500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 8500 -->
+            <div class="card">
+                <img src="https://chitralwool.com/cdn/shop/files/IMG_6638.jpg?v=1731094409" alt="Chitral Embroidered Set">
+                <h3>Chitral Embroidered Set</h3>
+                <p class="price">PKR 8500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 9500 -->
+            <div class="card">
+                <img src="https://seengar.com/wp-content/uploads/2021/07/185579190_2123178001154712_8137560335485628263_n.jpg" alt="Peshawari Style Qameez">
+                <h3>Peshawari Style Qameez</h3>
+                <p class="price">PKR 9500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <div class="card">
+                <img src="https://peshawarjackets.com/cdn/shop/files/1_fac5dd07-46f5-49e1-ae62-6942f4e18030.png?v=1749822338&width=1445" alt="Chitral Wool Vest">
+                <h3>Chitral Wool Vest</h3>
+                <p class="price">PKR 9500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 12000 -->
+            <div class="card">
+                <img src="https://static-01.daraz.pk/p/08b28b4744812532be6c2c2ab9974657.jpg" alt="Embroidered Waistcoat">
+                <h3>Embroidered Waistcoat</h3>
+                <p class="price">PKR 12000</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+
+            <!-- PKR 12500 -->
+            <div class="card">
+                <img src="https://www.shutterstock.com/image-photo/pakistani-pathan-kpk-man-pointing-260nw-2274770629.jpg" alt="Swati Traditional Wear">
+                <h3>Swati Traditional Wear</h3>
+                <p class="price">PKR 12500</p>
+                <p class="stars">★★★★★</p>
+                <div class="actions"><button class="add-btn">Add to Cart</button><i class="far fa-heart heart"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Preserving Pakistan's Cultural Legacy</h3>
+                <p><strong>Shops Location:</strong></p>
+                <p>Saddar<br>Quetta<br>Mingora<br>Gwadar</p>
+            </div>
+            <div>
+                <h3>Customer Care</h3>
+                <a href="#">Shipping & Delivery</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Size Guide</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div>
+                <h3>Connect:</h3>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div>
+                <h3>Connect With us</h3>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your Email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Cultural Heritage © 2025 Cultural Threads. All rights reserved | Crafted with love for Pakistani heritage
+        </div>
+    </div>
+
+    <!-- Optional: Simple interactivity for Add to Cart & Wishlist -->
+    <script>
+        document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productName = this.closest('.card').querySelector('h3').textContent;
+                alert(`"${productName}" added to cart!`);
+            });
+        });
+
+        document.querySelectorAll('.heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                this.classList.toggle('fas');
+                this.classList.toggle('far');
+            });
+        });
+    </script>
+</body>
+</html>
