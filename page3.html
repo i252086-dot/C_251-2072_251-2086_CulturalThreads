@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Heritage - Collections</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e8e8e8;
+            color: #333;
+        }
+
+        /* HEADER */
+        .header {
+            background: #1e3a2f;
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 12px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .logo-img {
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .brand-name {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            margin: 0 30px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            background: #f8f8f8;
+        }
+        .search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 18px;
+        }
+        .icons {
+            display: flex;
+            gap: 22px;
+        }
+        .icons i {
+            font-size: 26px;
+            color: white;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .icons i:hover {
+            color: #c0392b;
+            transform: scale(1.15);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            max-width: 1400px;
+            margin: 12px auto 0;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 8px 0;
+            transition: .3s;
+        }
+        .nav-links a:hover {
+            color: #c0392b;
+            border-bottom: 3px solid #c0392b;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fad3d3;
+            color: #8b1a1a;
+        }
+        .section-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        /* COLLECTION GRID */
+        .collection {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5c6c6;
+        }
+        .collection h2 {
+            font-size: 28px;
+            margin: 40px 0 20px;
+            color: #2c3e50;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        .card {
+            width: 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card h3 {
+            background: #c0392b;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+        }
+        .card p {
+            padding: 15px;
+            background: white;
+            min-height: 80px;
+            font-size: 15px;
+        }
+
+        /* Different colors for KPK (green) */
+        .kpk .collection { background: #d5efdb; }
+        .kpk .card h3 { background: #27ae60; }
+
+        /* FOOTER */
+        .footer {
+            background: #2c1e1a;
+            color: #f0e6d2;
+            padding: 80px 40px 40px;
+            margin-top: 100px;
+        }
+        .footer-content {
+            max-width: 1350px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+        @media(max-width:900px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(max-width:600px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .footer p {
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: #f0e6d2;
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .footer a:hover {
+            color: #c0392b;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .social-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .social-icons i:hover {
+            color: #c0392b;
+            transform: scale(1.2);
+        }
+        .newsletter input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            margin-bottom: 15px;
+        }
+        .newsletter button {
+            background: #c0392b;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .newsletter button:hover {
+            background: #a93226;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 15px;
+            opacity: 0.8;
+            padding-top: 30px;
+            border-top: 1px solid rgba(240,230,210,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="top-bar">
+            <div class="logo-section">
+                <img src="https://i.ibb.co/Y4sWPjbS/Screenshot-2025-11-30-140459.png" alt="Logo" class="logo-img">
+                <span class="brand-name">Cultural Heritage</span>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search anything...">
+            </div>
+            <div class="icons">
+                <a href="./page2.html"><i class="fas fa-user-circle"></i></a>
+                <a href="./page12.html"> <i class="far fa-heart"></i></a>
+                <a href="./page12.html"> <i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="./page1.html">Home</a>
+            <a href="#">KPK</a>
+            <a href="#">Balochistan</a>
+           <a href="./page4.html">Style Quiz</a>
+            <a href="./page13.html">About</a>
+        <a href="./page14.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- BALOCHISTAN SECTION -->
+    <div class="section-title">
+        <h1>Balochistani Culture</h1>
+        <p>Rich threadwork and vibrant traditional designs</p>
+    </div>
+
+    <div class="collection">
+        <a href="./page6.html" style="text-decoration: none; color:black"><h2>Women's Collection:</h2>
+        <div class="grid">
+            <div class="card"><h3>Baloch Dresses</h3><p>Mirror Work Dress<br>Embroidered Frocks<br>Traditional Gown</p></div>
+            <div class="card"><h3>Baloch Shawls</h3><p>Handwoven Shawl<br>Silk Embroidered Wrap<br>Traditional Shawl</p></div>
+            <div class="card"><h3>Baloch Dupattas</h3><p>Silk Dupatta<br>Embroidered Veil<br>Traditional Scarf</p></div>
+            <div class="card"><h3>Baloch Frocks</h3><p>Long Frock<br>Peshawari Style<br>Casual Wear</p></div>
+        </div></a>
+
+        <a href="./page7.html" style="text-decoration: none; color:black"><h2>Men's Collection:</h2>
+        <div class="grid">
+            <div class="card"><h3>Baloch Shalwar Kameez</h3><p>Classic Suit<br>Mirror Work<br>Cotton Wear</p></div>
+            <div class="card"><h3>Baloch Waistcoat</h3><p>Velvet Jacket<br>Embroidered Vest<br>Traditional Coat</p></div>
+            <div class="card"><h3>Baloch Turban</h3><p>Silk Pagri<br>Cotton Turban<br>Desert Wrap</p></div>
+            <div class="card"><h3>Baloch Shawls</h3><p>Wool Shawl<br>Camel Hair<br>Silk Shawl</p></div>
+        </div></a>
+    </div>
+
+    <!-- KPK SECTION (Green Theme) -->
+    <div class="kpk">
+        <div class="section-title" style="background:#d5efdb; color:#1e6b3a;">
+            <h1>KPK Culture</h1>
+            <p>Heritage from the mountains with intricate embroidery</p>
+        </div>
+
+        <div class="collection">
+            <a href="./page8.html" style="text-decoration: none; color:black"><h2>Women's Collection:</h2>
+            <div class="grid">
+                <div class="card"><h3>KPK Dresses</h3><p>Swati Dress<br>Chitrali Frock<br>Peshawari Suit</p></div>
+                <div class="card"><h3>KPK Shawls</h3><p>Wool Shawl<br>Pashmina Shawl<br>Chitrali Shawl</p></div>
+                <div class="card"><h3>KPK Dupattas</h3><p>Embroidered Dupatta<br>Swati Scarf</p></div>
+                <div class="card"><h3>KPK Frocks</h3><p>Embroidered Frocks<br>Festive Dress<br>Party Wear</p></div>
+            </div></a>
+
+            <a href="./page9.html" style="text-decoration: none; color:black"><h2>Men's Collection:</h2>
+            <div class="grid">
+                <div class="card"><h3>KPK Shalwar Kameez</h3><p>Peshawari Style Kameez<br>Chitrali Embroidered Suit</p></div>
+                <div class="card"><h3>KPK Waistcoat</h3><p>Chitral Wool Vest<br>Peshawari Hand Jacket</p></div>
+                <div class="card"><h3>KPK Caps</h3><p>Pakol Hat<br>Chitrali Cap<br>Swati Embroidered Topi</p></div>
+                <div class="card"><h3>KPK Shawls</h3><p>Swati Wool Shawl<br>Chitral Pashmina<br>Traditional Shawl</p></div>
+            </div></a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Preserving Pakistan's Cultural Legacy</h3>
+                <p><strong>Shops Location:</strong></p>
+                <p>Saddar<br>Quetta<br>Mingora<br>Gwadar</p>
+            </div>
+            <div>
+                <h3>Customer Care</h3>
+                <a href="#">Shipping & Delivery</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Size Guide</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div>
+                <h3>Connect:</h3>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+            </div>
+            <div>
+                <h3>Connect With us</h3>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your Email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Cultural Heritage © 2025 Cultural Threads. All rights reserved | Crafted with love for Pakistani heritage
+        </div>
+    </div>
+
+</body>
+</html>
